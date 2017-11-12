@@ -9,18 +9,18 @@ $hostname = 'localhost';
 $dbname = 'mj';
 
 /* mysql username */
-$username = 'mj';
+$username = 'root';
 
 /* mysql password */
-$password = 'marcus2017';
+$password = '';
 
 try
 {
     $dbh = new PDO("mysql:host=$hostname;dbname=$dbname;", $username, $password);
-    $dbh->setAttribute(PDO::ATTR_ERRMODE; PDO::ERRMODE_EXCEPTION);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $dbh->exec("set names utf8");
 }
-catch
+catch(PDOException $e)
 {
     echo $e->getMessage();
 }

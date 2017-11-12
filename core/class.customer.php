@@ -8,19 +8,17 @@ class CUSTOMER
       $this->db = $DB_con;
     }
 
-    public function create($email,$name,$surname,$gender,$address,$phone,$birthday)
+    public function create($email,$name,$surname,$address,$phone)
     {
        try
        {
-           $statement = $this->db->prepare("INSERT INTO customers(email,name,surname,gender,address,phone,birthday) VALUES(:cemail,:cname,:csurname,:cgender,:caddress,:cphone,:cbirthday)");
+           $statement = $this->db->prepare("INSERT INTO customers(email,name,surname,address,phone) VALUES(:cemail,:cname,:csurname,:caddress,:cphone)");
 
            $statement->bindparam(":cemail", $email);
            $statement->bindparam(":cname", $name);
            $statement->bindparam(":csurname", $surname);
-           $statement->bindparam(":cgender", $gender);
            $statement->bindparam(":caddress", $address);
            $statement->bindparam(":cphone", $phone);
-           $statement->bindparam(":cbirthday", $birthday);
            $statement->execute();
 
            return $statement;
