@@ -38,7 +38,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
         <script type="text/javascript" src="js/memenu.js"></script>
         <script>$(document).ready(function () {
-            
+
                 var alert = document.getElementById("al");
                 alert.style.display = "none";
                 $(".memenu").memenu();
@@ -66,7 +66,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 });
 
             });
-            
+
         </script>		
     </head>
     <body> 
@@ -205,10 +205,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     document.getElementById("name").innerHTML = "Tie Amsterdam Metal Copper";
                     document.getElementById("img1").src = "images/tie-a-c-b.jpg";
                 }
-                
-                
-                
-                
+
+
+
+
                 if (text == 101) {
                     document.getElementById("name").innerHTML = "Bow Tie London Black";
                 }
@@ -312,10 +312,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="single contact">
             <div class="container">
                 <div class="single-main">
-                    
-        <div class="alert alert-success cart-notification" role="alert" id="al">
-            <strong>Added to chart! </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click <a href="checkout.html"><strong>HERE</strong></a> to proceed to cart
-        </div>
+
+                    <div class="alert alert-success cart-notification" role="alert" id="al">
+                        <strong>Added to chart! </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click <a href="checkout.html"><strong>HERE</strong></a> to proceed to cart
+                    </div>
                     <div class="col-md-9 single-main-left">
                         <div class="sngl-top">
                             <div class="col-md-5 single-top-left">	
@@ -384,7 +384,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <ul>
                                             <li>
                                                 <form>
-                                                    Quantity: <input type="number" name="quantity" min="1" max="100" value="1">
+                                                    Quantity: <input id='qua' type="number" name="quantity" min="1" max="100" value="1">
                                                 </form>
                                             </li>
                                         </ul>
@@ -502,20 +502,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
 
             function addtocart() {
-                var prod = window.location.hash.substring(1)
-                var names = JSON.parse(localStorage.getItem("cart"));;
-                if(names==null){
-                    names=prod+",";
+                var x = document.getElementById("qua").value;
+                for (var i = 0; i < x; i++) {
+                    var prod = window.location.hash.substring(1)
+                    var names = JSON.parse(localStorage.getItem("cart"));
+                    ;
+
+                    if (names == null) {
+                        names = prod + ",";
+                    } else {
+                        names = names + prod + ",";
+                    }
+
+                    localStorage.setItem("cart", JSON.stringify(names));
                 }
-                else{
-                    names = names + prod+",";
-                }
-                localStorage.setItem("cart", JSON.stringify(names));
                 var alert = document.getElementById("al");
                 alert.style.display = "block";
-                setTimeout(function(){  $("#al").fadeOut(1500);}, 5000);
+                setTimeout(function () {
+                    $("#al").fadeOut(1500);
+                }, 5000);
             }
-           
+
 
             var slideIndex = 1;
             showSlides(slideIndex);

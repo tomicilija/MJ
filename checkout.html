@@ -52,8 +52,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 var hastag = "1";
                 var stev = 1;
                 var hea = 0;
+                var qua = [0];
+                var urejeno = [0];
+                urejeno[0] = res[0];
+                var nas = true;
+                var y = 0;
+                var x = 0;
+                for (var i = 0; i < res.length; i++) {
+                    //alert(urejeno + '  ' + qua);
+                    for (var j = 0; j < urejeno.length; j++) {
+                        if (res[i] == urejeno[j]) {
+                            qua[y]++;
+                            //alert('add' + j + '/' + y);
+                        }
+                        if (res[i + 1] == urejeno[j]) {
+                            nas = false
+                        }
+                    }
+                    if (nas && i != res.length - 1) {
+                        urejeno = urejeno + ',' + res[i + 1];
+                        y++;
+                        qua[y] = 0;
+                    }
+                    //alert('neki');
+                    nas = true;
+                }
+                try {
+                    res = urejeno.split(",");
+                } catch (a) {
+                    res=urejeno;
+                }
 
+                document.getElementById("abc").innerHTML = urejeno;
+                document.getElementById("bagitems").innerHTML = qua;
                 res.forEach(function (entry) {
+                    //alert('add');
                     switch (entry) {
                         case "1":
                             name = "Tie London Black";
@@ -320,12 +353,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             '<li class="ring-in"><a href="single.html#' + hastag + '" ><img src="' + img + '" class="img-responsive" alt=""></a>' +
                             '</li><li><span class="name">' + name + '</span></li>' +
                             '<li><span class="cost">$ 290.00</span></li>' +
+                            '<li><span>' + qua[x] + '</span></li>' +
                             '<li><span>Free</span><p>Delivered in 2-3 business days</p></li>' +
                             '<div class="clearfix"> </div></ul>';
                     stev++;
                     hea++;
+                    x++;
                 });
-                document.getElementById("bagitems").innerHTML = hea;
+                //document.getElementById("bagitems").innerHTML = hea;
 
 
             });
@@ -341,7 +376,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="ckeckout-top">
                     <div class="cart-items">
-                        <h3>My Shopping Bag (<span id="bagitems">0</span>)</h3>
+                        <h3><span id='abc'>My Shopping Bag</span> (<span id="bagitems">0</span>)</h3>
                         <script>
                             $(document).ready(function (c) {
                                 $('.close1').on('click', function (c) {
@@ -524,8 +559,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="in-check" id="cart-prod" >
                             <ul class="unit">
                                 <li><span>Item</span></li>
-                                <li><span>Product Name</span></li>		
-                                <li><span>Unit Price</span></li>
+                                <li><span>Product</span></li>		
+                                <li><span>Price</span></li>		
+                                <li><span>Quantity</span></li>
                                 <li><span>Delivery Details</span></li>
                             </ul>
                             <div class="clearfix"> </div>
