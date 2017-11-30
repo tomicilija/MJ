@@ -12,7 +12,7 @@ class ARTICLE
     {
        try
        {
-           $statement = $this->db->prepare("INSERT INTO articles(name,description,price,category,images) VALUES(:aname,adescription,aprice,acategory,images)");
+           $statement = $this->db->prepare("INSERT INTO articles(name,description,price,category,images) VALUES(:aname,:adescription,:aprice,:acategory,:aimages)");
 
            $statement->bindparam(":aname", $email);
            $statement->bindparam(":adescription", $name);
