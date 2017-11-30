@@ -58,7 +58,7 @@ class ARTICLE
             try{
                 $stmt = $this->db->prepare($sql);
                 $stmt->execute();
-                $albums=$stmt->fetchAll(PDO::FETCH_ASSOC);
+                $articles=$stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $articles;
                 
             }catch(PDOException $e){
