@@ -9,7 +9,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     include_once 'core/db.php';
     $article_id = $_GET['id'];
     $single = $article->get($article_id);
-
+    
+    if(isset($_POST['id'])){
+        $id=$_POST['id'];
+        $qua = $_POST['quantity'];
+        $cart=$_SESSION['cart'];
+        array_push($cart,$id,$qua);
+        $_SESSION['cart']=$cart;
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -80,241 +88,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <body> 
         <div id="header"></div>
 
-        <script>
-            $(function () {
-                var text = window.location.hash.substring(1)
-                if (text == 1) {
-                    document.getElementById("name").innerHTML = "Tie London Black";
-                    document.getElementById("img1").src = "images/tie-l-b-g.jpg";
-                    document.getElementById("img1").src = "images/tie-l-b-g.jpg";
-                    document.getElementById("img1").src = "images/tie-l-b-g.jpg";
-                }
-                if (text == 2) {
-                    document.getElementById("name").innerHTML = "Tie London White";
-                    document.getElementById("img1").src = "images/tie-l-w-b.jpg";
-                }
-                if (text == 3) {
-                    document.getElementById("name").innerHTML = "Tie London Red";
-                    document.getElementById("img1").src = "images/tie-l-r-w.jpg";
-                }
-                if (text == 4) {
-                    document.getElementById("name").innerHTML = "Tie London Blue";
-                    document.getElementById("img1").src = "images/tie-l-b-w.jpg";
-                }
-                if (text == 5) {
-                    document.getElementById("name").innerHTML = "Tie London Gold Reflective";
-                    document.getElementById("img1").src = "images/tie-l-g-b.jpg";
-                }
-                if (text == 6) {
-                    document.getElementById("name").innerHTML = "Tie London Silver Reflective";
-                    document.getElementById("img1").src = "images/tie-l-w-b.jpg";
-                }
-                if (text == 7) {
-                    document.getElementById("name").innerHTML = "Tie London Metal Aluminium";
-                    document.getElementById("img1").src = "images/tie-l-w-b.jpg";
-                }
-                if (text == 8) {
-                    document.getElementById("name").innerHTML = "Tie London Metal Copper";
-                    document.getElementById("img1").src = "images/tie-l-c-b.jpg";
-                }
-                if (text == 9) {
-                    document.getElementById("name").innerHTML = "Tie Paris Black";
-                    document.getElementById("img1").src = "images/tie-p-b-g.jpg";
-                }
-                if (text == 10) {
-                    document.getElementById("name").innerHTML = "Tie Paris White";
-                    document.getElementById("img1").src = "images/tie-p-w-b.jpg";
-                }
-                if (text == 11) {
-                    document.getElementById("name").innerHTML = "Tie Paris Red";
-                    document.getElementById("img1").src = "images/tie-p-r-w.jpg";
-                }
-                if (text == 12) {
-                    document.getElementById("name").innerHTML = "Tie Paris Blue";
-                    document.getElementById("img1").src = "images/tie-p-b-w.jpg";
-                }
-                if (text == 13) {
-                    document.getElementById("name").innerHTML = "Tie Paris Gold Reflective";
-                    document.getElementById("img1").src = "images/tie-p-g-b.jpg";
-                }
-                if (text == 14) {
-                    document.getElementById("name").innerHTML = "Tie Paris Silver Reflective";
-                    document.getElementById("img1").src = "images/tie-p-w-b.jpg";
-                }
-                if (text == 15) {
-                    document.getElementById("name").innerHTML = "Tie Paris Metal Aluminium";
-                    document.getElementById("img1").src = "images/tie-p-w-b.jpg";
-                }
-                if (text == 16) {
-                    document.getElementById("name").innerHTML = "Tie Paris Metal Copper";
-                    document.getElementById("img1").src = "images/tie-p-c-b.jpg";
-                }
-                if (text == 17) {
-                    document.getElementById("name").innerHTML = "Tie Rome Black";
-                    document.getElementById("img1").src = "images/tie-r-b-g.jpg";
-                }
-                if (text == 18) {
-                    document.getElementById("name").innerHTML = "Tie Rome White";
-                    document.getElementById("img1").src = "images/tie-r-w-b.jpg";
-                }
-                if (text == 19) {
-                    document.getElementById("name").innerHTML = "Tie Rome Red";
-                    document.getElementById("img1").src = "images/tie-r-r-w.jpg";
-                }
-                if (text == 20) {
-                    document.getElementById("name").innerHTML = "Tie Rome Blue";
-                    document.getElementById("img1").src = "images/tie-r-b-w.jpg";
-                }
-                if (text == 21) {
-                    document.getElementById("name").innerHTML = "Tie Rome Gold Reflective";
-                    document.getElementById("img1").src = "images/tie-r-g-b.jpg";
-                }
-                if (text == 22) {
-                    document.getElementById("name").innerHTML = "Tie Rome Silver Reflective";
-                    document.getElementById("img1").src = "images/tie-r-w-b.jpg";
-                }
-                if (text == 23) {
-                    document.getElementById("name").innerHTML = "Tie Rome Metal Aluminium";
-                    document.getElementById("img1").src = "images/tie-r-w-b.jpg";
-                }
-                if (text == 24) {
-                    document.getElementById("name").innerHTML = "Tie Rome Metal Copper";
-                    document.getElementById("img1").src = "images/tie-r-c-b.jpg";
-                }
-                if (text == 25) {
-                    document.getElementById("name").innerHTML = "Tie Amsterdam Black";
-                    document.getElementById("img1").src = "images/tie-a-b-g.jpg";
-                }
-                if (text == 26) {
-                    document.getElementById("name").innerHTML = "Tie Amsterdam White";
-                    document.getElementById("img1").src = "images/tie-a-w-b.jpg";
-                }
-                if (text == 27) {
-                    document.getElementById("name").innerHTML = "Tie Amsterdam Red";
-                    document.getElementById("img1").src = "images/tie-a-r-w.jpg";
-                }
-                if (text == 28) {
-                    document.getElementById("name").innerHTML = "Tie Amsterdam Blue";
-                    document.getElementById("img1").src = "images/tie-a-b-w.jpg";
-                }
-                if (text == 29) {
-                    document.getElementById("name").innerHTML = "Tie Amsterdam Gold Reflective";
-                    document.getElementById("img1").src = "images/tie-a-g-b.jpg";
-                }
-                if (text == 30) {
-                    document.getElementById("name").innerHTML = "Tie Amsterdam Silver Reflective";
-                    document.getElementById("img1").src = "images/tie-a-w-b.jpg";
-                }
-                if (text == 31) {
-                    document.getElementById("name").innerHTML = "Tie Amsterdam Metal Aluminium";
-                    document.getElementById("img1").src = "images/tie-a-w-b.jpg";
-                }
-                if (text == 32) {
-                    document.getElementById("name").innerHTML = "Tie Amsterdam Metal Copper";
-                    document.getElementById("img1").src = "images/tie-a-c-b.jpg";
-                }
-
-
-
-
-                if (text == 101) {
-                    document.getElementById("name").innerHTML = "Bow Tie London Black";
-                }
-                if (text == 102) {
-                    document.getElementById("name").innerHTML = "Bow Tie London White";
-                }
-                if (text == 103) {
-                    document.getElementById("name").innerHTML = "Bow Tie London Red";
-                }
-                if (text == 104) {
-                    document.getElementById("name").innerHTML = "Bow Tie London Blue";
-                }
-                if (text == 105) {
-                    document.getElementById("name").innerHTML = "Bow Tie London Gold Reflective";
-                }
-                if (text == 106) {
-                    document.getElementById("name").innerHTML = "Bow Tie London Silver Reflective";
-                }
-                if (text == 107) {
-                    document.getElementById("name").innerHTML = "Bow Tie London Metal Aluminium";
-                }
-                if (text == 108) {
-                    document.getElementById("name").innerHTML = "Bow Tie London Metal Copper";
-                }
-                if (text == 109) {
-                    document.getElementById("name").innerHTML = "Bow Tie Paris Black";
-                }
-                if (text == 110) {
-                    document.getElementById("name").innerHTML = "Bow Tie Paris White";
-                }
-                if (text == 111) {
-                    document.getElementById("name").innerHTML = "Bow Tie Paris Red";
-                }
-                if (text == 112) {
-                    document.getElementById("name").innerHTML = "Bow Tie Paris Blue";
-                }
-                if (text == 113) {
-                    document.getElementById("name").innerHTML = "Bow Tie Paris Gold Reflective";
-                }
-                if (text == 114) {
-                    document.getElementById("name").innerHTML = "Bow Tie Paris Silver Reflective";
-                }
-                if (text == 115) {
-                    document.getElementById("name").innerHTML = "Bow Tie Paris Metal Aluminium";
-                }
-                if (text == 116) {
-                    document.getElementById("name").innerHTML = "Bow Tie Paris Metal Copper";
-                }
-                if (text == 117) {
-                    document.getElementById("name").innerHTML = "Bow Tie Rome Black";
-                }
-                if (text == 118) {
-                    document.getElementById("name").innerHTML = "Bow Tie Rome White";
-                }
-                if (text == 119) {
-                    document.getElementById("name").innerHTML = "Bow Tie Rome Red";
-                }
-                if (text == 120) {
-                    document.getElementById("name").innerHTML = "Bow Tie Rome Blue";
-                }
-                if (text == 121) {
-                    document.getElementById("name").innerHTML = "Bow Tie Rome Gold Reflective";
-                }
-                if (text == 122) {
-                    document.getElementById("name").innerHTML = "Bow Tie Rome Silver Reflective";
-                }
-                if (text == 123) {
-                    document.getElementById("name").innerHTML = "Bow Tie Rome Metal Aluminium";
-                }
-                if (text == 124) {
-                    document.getElementById("name").innerHTML = "Bow Tie Rome Metal Copper";
-                }
-                if (text == 125) {
-                    document.getElementById("name").innerHTML = "Bow Tie Amsterdam Black";
-                }
-                if (text == 126) {
-                    document.getElementById("name").innerHTML = "Bow Tie Amsterdam White";
-                }
-                if (text == 127) {
-                    document.getElementById("name").innerHTML = "Bow Tie Amsterdam Red";
-                }
-                if (text == 128) {
-                    document.getElementById("name").innerHTML = "Bow Tie Amsterdam Blue";
-                }
-                if (text == 129) {
-                    document.getElementById("name").innerHTML = "Bow Tie Amsterdam Gold Reflective";
-                }
-                if (text == 130) {
-                    document.getElementById("name").innerHTML = "Bow Tie Amsterdam Silver Reflective";
-                }
-                if (text == 131) {
-                    document.getElementById("name").innerHTML = "Bow Tie Amsterdam Metal Aluminium";
-                }
-                if (text == 132) {
-                    document.getElementById("name").innerHTML = "Bow Tie Amsterdam Metal Copper";
-                }
-            });
-        </script> 
+       
         <!--start-single-->
 
         <div class="single contact">
@@ -366,7 +140,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </div>	
                             <div class="col-md-7 single-top-right">
                                 <div class="single-para simpleCart_shelfItem">
-                                    <h2 id="name">Tie London Red</h2>
+                                    <h2 id="name"><?php echo $single['name']; ?></h2>
+                                    <strong><?php print_r($_SESSION['cart']); ?></strong>
                                     <div class="star-on">
                                         <ul class="star-footer">
                                             <li onclick="rate('5')"><a href="#str1"></a></li>
@@ -381,23 +156,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         </div>
                                         <div class="clearfix"> </div>
                                     </div>
-                                    <h5 class="item_price">65 €</h5>
-                                    <p>Opis izdelka la la la la la la la la la
-                                        la la la la la la la la la la la la la la la 
-                                        la la la la la la la la la la la la
-                                        la la la la la la la la la 
-                                        la la la la la la la la la la la la la la la la la 
-                                        la la la la la la la la la la la la la la la la la la</p>
+                                    <h5 class="item_price"><?php echo $single['price']; ?> €</h5>
+                                    <p><?php echo $single['description']; ?></p>
                                     <div class="available">
                                         <ul>
                                             <li>
-                                                <form>
+                                                <form method="post" role="form">
                                                     Quantity: <input id='qua' type="number" name="quantity" min="1" max="100" value="1">
+                                                    <input type="hidden" name="id" value="<?php echo $single['id']; ?>">
+                                                    <input type="submit" onclick="addtocart()" class="add-cart item_add" value="ADD TO CART">
                                                 </form>
                                             </li>
                                         </ul>
                                     </div>
-                                    <a onclick="addtocart()" class="add-cart item_add">ADD TO CART</a>
 
                                 </div>
                             </div>
@@ -510,20 +281,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             }
 
             function addtocart() {
-                var x = document.getElementById("qua").value;
-                for (var i = 0; i < x; i++) {
-                    var prod = window.location.hash.substring(1)
-                    var names = JSON.parse(localStorage.getItem("cart"));
-                    ;
-
-                    if (names == null) {
-                        names = prod + ",";
-                    } else {
-                        names = names + prod + ",";
-                    }
-
-                    localStorage.setItem("cart", JSON.stringify(names));
-                }
+                
                 var alert = document.getElementById("al");
                 alert.style.display = "block";
                 setTimeout(function () {

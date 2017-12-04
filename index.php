@@ -141,11 +141,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="product-one">
                                     <div class="col-md-3 product-left">
                                             <div class="product-main simpleCart_shelfItem">
-                                                    <a href="single.php?id=<?php echo $row['id']; ?>" class="mask"><img class="img-responsive zoom-img" src="images/<?php echo $row['koda']; ?>.jpg" alt="" /></a>
+                                                    <a href="single.php?id=<?php echo $row['id']; ?>" class="mask"><img class="img-responsive zoom-img" src="images/<?php echo $row['code']; ?>.jpg" alt="" /></a>
                                                     <div class="product-bottom">
                                                             <h3><?php echo $row['name']; ?></h3>
                                                             <p><?php echo $row['price']; ?> €</p>
-                                                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">0 €</span></h4>
+                                                            <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price"><?php echo $row['discount']; ?> €</span></h4>
                                                     </div>
                                                     <div class="srch">
                                                             <span>-30%</span>
