@@ -2,7 +2,6 @@
 ob_start();
 session_start();
 $cart=array();
-$_SESSION['cart']=$cart;
 
 /* mysql hostname */
 $hostname = 'localhost';

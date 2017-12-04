@@ -10,14 +10,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     $article_id = $_GET['id'];
     $single = $article->get($article_id);
     
-    if(isset($_POST['id'])){
+   /* if(isset($_POST['id'])){
         $id=$_POST['id'];
         $qua = $_POST['quantity'];
         $cart=$_SESSION['cart'];
         array_push($cart,$id,$qua);
         $_SESSION['cart']=$cart;
     }
-    
+*/
+
+  if(isset($_GET['a'])){
+      if($_GET['a']==1){
+          $a=1;
+      }
+  }else{
+      $a=0;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +46,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     animation: "slide",
                     controlNav: "thumbnails"
                 });
+                var alert = document.getElementById("al");
+                alert.style.display = "none";
             });
         </script> 
         <!--Custom-Theme-files-->
@@ -55,15 +65,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script type="text/javascript" src="js/memenu.js"></script>
         <script>$(document).ready(function () {
 
-                var alert = document.getElementById("al");
-                alert.style.display = "none";
                 $(".memenu").memenu();
+                
+                var a = '<?php echo $a; ?>';
+                
+                if(a==1){
+                    var alert = document.getElementById("al");
+                    document.getElementById("star").innerHTML='test';
+                    alert.style.display = "block";
+                    setTimeout(function () {
+                        $("#al").fadeOut(1500);
+                    }, 5000); 
+                    a = 0;
+                }
+            
             });</script>	
         <!--dropdown-->
         <script src="js/jquery.easydropdown.js"></script>	
         <script type="text/javascript">
             $(function () {
-
                 var menu_ul = $('.menu_drop > li > ul'),
                         menu_a = $('.menu_drop > li > a');
 
@@ -161,7 +181,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <div class="available">
                                         <ul>
                                             <li>
-                                                <form method="post" role="form">
+                                                <form method="post" role="form" action="addtocart.php">
                                                     Quantity: <input id='qua' type="number" name="quantity" min="1" max="100" value="1">
                                                     <input type="hidden" name="id" value="<?php echo $single['id']; ?>">
                                                     <input type="submit" onclick="addtocart()" class="add-cart item_add" value="ADD TO CART">
@@ -275,19 +295,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
         <!--end-single-->
         <script>
+
             function rate(vre) {
 
                 document.getElementById("star").innerHTML = vre;
             }
 
-            function addtocart() {
-                
-                var alert = document.getElementById("al");
-                alert.style.display = "block";
-                setTimeout(function () {
-                    $("#al").fadeOut(1500);
-                }, 5000);
-            }
+            
 
 
             var slideIndex = 1;
