@@ -118,11 +118,12 @@ include_once 'core/db.php';
             <div class="container">
                 <div class="ckeck-top heading">
                     <h2 id="izpis">Checkout</h2>
+                    <strong><?php print_r($_SESSION['cart']); ?></strong><br/>
                     <button onclick="empty()">Empty</button>
                 </div>
                 <div class="ckeckout-top">
                     <div class="cart-items">
-                        <h3><span id='abc'>My Shopping Bag</span> (<span id="bagitems">0</span>)</h3>
+                        <h3><span id='abc'>My Shopping Bag</span>(<?php echo count($_SESSION['cart']) ?>)</h3>
                         <script>
                             $(document).ready(function (c) {
                                 $('.close1').on('click', function (c) {

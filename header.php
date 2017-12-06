@@ -4,6 +4,10 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+    include_once 'core/db.php';
+    $price =  $article->getCartPrice($_SESSION['cart']);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,11 +50,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="col-md-6 top-header-left">
                                     <div class="cart box_1">
                                             <a href="checkout.php">
-                                                     <div class="total">
-                                                            <span class="simpleCart_total"></span></div>
+                                                     <div class="total"> <?php echo round($price,2); ?>0 €</div>
                                                             <img src="images/cart-2.png" alt="" height="15"/>
                                             </a>
-                                            <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                                             <div class="clearfix"> </div>
                                     </div>
                             </div>

@@ -10,6 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     
     //index artiklov v array
     $articles = $article->index(0);
+    $fetured =  $article->getFeatured();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script>
     
 $(function(){
-  $("#header").load("header.html"); 
+  $("#header").load("header.php"); 
   $("#footer").load("footer.html"); 
 });
 </script>
@@ -135,7 +136,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             
                                    <?php 
                                         //
-                                        foreach($articles as $row)
+                                        foreach($fetured as $row)
                                         {
                                     ?>
                                     <div class="product-one">
@@ -148,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                             <h4><a class="item_add" href="#"><i></i></a> <span class=" item_price"><?php echo $row['discount']; ?> €</span></h4>
                                                     </div>
                                                     <div class="srch">
-                                                            <span>-30%</span>
+                                                            <span>-60%</span>
                                                     </div>
                                             </div>
                                     </div>
